@@ -45,7 +45,10 @@ def search_new(request):
             'image': 'https://img.corsocomo.com/image/cache/data/w/17-669-02-57-35/17-669-02-57-35-630x630.jpg'
         }
     ]
-    return render(request, 'search.html', context={'search':data_search_n})
+    if len(data_search_n)==0:
+        return render(request, 'search-empty.html')
+    else:
+        return render(request, 'search.html', context={'search':data_search_n})
 
 
 def search_basic(request):
@@ -57,8 +60,14 @@ def search_basic(request):
             'image':'http://vsezapolceny.ru/sites/default/files/zhenskaya-domashnyaya-obuv/funny-mens-plush-slippers-2015-indoor-shoes-house-cute-women-slippers-emoji-shoes-warm-house-slipper.jpg'
         }
     ]
-    return render(request, 'search.html', context={'search':data_search_b})
+    if len(data_search_b) == 0:
+        return render(request, 'search-empty.html')
+    else:
+        return render(request, 'search.html', context={'search':data_search_b})
 
 def search_sale(request):
-
-    return render(request, 'search-sale.html')
+    data_s=[]
+    if len(data_s) == 0:
+        return render(request, 'search-empty.html')
+    else:
+        return render(request, 'search.html', context={'search':data_s})
